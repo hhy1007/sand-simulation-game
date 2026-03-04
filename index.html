@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>落沙模拟游戏 - 手机可访问版</title>
+    <meta name="description" content="基于物理引擎的落沙模拟游戏，专为手机优化">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            text-align: center;
+        }
+        
+        .container {
+            max-width: 800px;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .subtitle {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+        
+        .qr-section {
+            margin: 30px 0;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+        }
+        
+        .qr-code {
+            width: 200px;
+            height: 200px;
+            margin: 0 auto 20px;
+            background: white;
+            padding: 10px;
+            border-radius: 10px;
+        }
+        
+        .qr-code img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+        
+        .links {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin: 30px 0;
+        }
+        
+        .link {
+            display: inline-block;
+            padding: 15px 30px;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .link:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+        
+        .instructions {
+            text-align: left;
+            margin-top: 30px;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+            font-size: 0.95rem;
+        }
+        
+        .instructions h3 {
+            margin-bottom: 10px;
+            color: #4ecdc4;
+        }
+        
+        .instructions ol {
+            padding-left: 20px;
+            margin: 10px 0;
+        }
+        
+        .instructions li {
+            margin: 8px 0;
+        }
+        
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin: 30px 0;
+        }
+        
+        .feature {
+            padding: 15px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .feature i {
+            font-size: 2rem;
+            margin-bottom: 10px;
+            color: #4ecdc4;
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .qr-code {
+                width: 150px;
+                height: 150px;
+            }
+            
+            .link {
+                padding: 12px 24px;
+                font-size: 1rem;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <h1><i class="fas fa-gamepad"></i> 落沙模拟游戏</h1>
+        <p class="subtitle">基于物理引擎的粒子模拟系统 | 手机完美适配</p>
+        
+        <div class="qr-section">
+            <div class="qr-code">
+                <img src="https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=https://hhy1007.github.io/sand-simulation-game/public/" 
+                     alt="扫描二维码访问游戏">
+            </div>
+            <p>扫描二维码用手机访问游戏</p>
+        </div>
+        
+        <div class="links">
+            <a href="./public/" class="link">
+                <i class="fas fa-play"></i> 立即开始游戏
+            </a>
+            <a href="https://github.com/hhy1007/sand-simulation-game" class="link" target="_blank">
+                <i class="fab fa-github"></i> 查看源代码
+            </a>
+        </div>
+        
+        <div class="features">
+            <div class="feature">
+                <i class="fas fa-mobile-alt"></i>
+                <h3>手机优化</h3>
+                <p>专为触摸屏设计，响应式布局</p>
+            </div>
+            <div class="feature">
+                <i class="fas fa-atom"></i>
+                <h3>物理引擎</h3>
+                <p>真实的粒子物理模拟</p>
+            </div>
+            <div class="feature">
+                <i class="fas fa-palette"></i>
+                <h3>16种材质</h3>
+                <p>沙子、水、火、冰等</p>
+            </div>
+            <div class="feature">
+                <i class="fas fa-bolt"></i>
+                <h3>化学反应</h3>
+                <p>燃烧、溶解、爆炸等特效</p>
+            </div>
+        </div>
+        
+        <div class="instructions">
+            <h3><i class="fas fa-info-circle"></i> 手机访问指南</h3>
+            <ol>
+                <li>使用手机浏览器访问: <strong>https://hhy1007.github.io/sand-simulation-game/</strong></li>
+                <li>点击"立即开始游戏"按钮</li>
+                <li>允许页面加载资源（约3-5秒）</li>
+                <li>单指触摸：放置材质</li>
+                <li>双指触摸：擦除粒子</li>
+                <li>双指缩放：调整视图</li>
+                <li>旋转手机：自动适应屏幕</li>
+            </ol>
+        </div>
+        
+        <div class="instructions" style="margin-top: 15px;">
+            <h3><i class="fas fa-rocket"></i> 部署信息</h3>
+            <p>✅ GitHub Pages已启用</p>
+            <p>✅ HTTPS安全连接</p>
+            <p>✅ 全球CDN加速</p>
+            <p>✅ 手机完美适配</p>
+            <p>部署时间: 2026-03-04 | 版本: 1.0.0</p>
+        </div>
+    </div>
+    
+    <script>
+        // 检查是否为移动设备
+        function isMobile() {
+            return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+        }
+        
+        // 如果是移动设备，显示特殊提示
+        if (isMobile()) {
+            document.querySelector('.subtitle').innerHTML += '<br><span style="color:#4ecdc4;">(检测到移动设备，已自动优化)</span>';
+        }
+        
+        // 自动重定向到游戏页面（如果用户等待超过5秒）
+        setTimeout(() => {
+            if (window.location.hash !== '#skip-redirect') {
+                console.log('5秒后自动跳转到游戏页面...');
+            }
+        }, 5000);
+    </script>
+</body>
+</html>

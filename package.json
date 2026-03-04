@@ -1,0 +1,40 @@
+{
+  "name": "sand-simulation-game",
+  "version": "1.0.0",
+  "description": "基于物理引擎和HTML/CSS的落沙模拟游戏，带有材质系统",
+  "main": "public/main.js",
+  "type": "module",
+  "scripts": {
+    "start": "vite",
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "serve": "http-server public -p 8080",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "physics",
+    "sand-simulation",
+    "canvas",
+    "html5",
+    "game",
+    "particle-system",
+    "material-system"
+  ],
+  "author": "Claude Code Agent Teams",
+  "license": "MIT",
+  "dependencies": {
+    "vite": "^5.0.0"
+  },
+  "devDependencies": {
+    "http-server": "^14.1.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yourusername/sand-simulation-game.git"
+  },
+  "bugs": {
+    "url": "https://github.com/yourusername/sand-simulation-game/issues"
+  },
+  "homepage": "https://github.com/yourusername/sand-simulation-game#readme"
+}
