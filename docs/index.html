@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>落沙模拟游戏 - 手机直接访问</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 50px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        .container {
+            background: rgba(255,255,255,0.1);
+            padding: 40px;
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: #4ecdc4;
+        }
+        .button {
+            display: inline-block;
+            padding: 15px 30px;
+            background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-size: 1.2rem;
+            margin: 20px;
+            transition: transform 0.3s;
+        }
+        .button:hover {
+            transform: translateY(-5px);
+        }
+        .qr {
+            margin: 30px auto;
+            background: white;
+            padding: 15px;
+            border-radius: 10px;
+            width: 200px;
+            height: 200px;
+        }
+        .qr img {
+            width: 100%;
+            height: 100%;
+        }
+        .mobile-tip {
+            background: rgba(255,255,255,0.1);
+            padding: 15px;
+            border-radius: 10px;
+            margin-top: 20px;
+            text-align: left;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🎮 落沙模拟游戏</h1>
+        <p>基于物理引擎的粒子模拟 | 手机完美适配</p>
+        
+        <div class="qr">
+            <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https://hhy1007.github.io/sand-simulation-game/game.html" 
+                 alt="扫描二维码玩落沙游戏">
+        </div>
+        <p>扫描二维码用手机访问游戏</p>
+        
+        <a href="game.html" class="button">🎮 立即开始游戏</a>
+        
+        <div class="mobile-tip">
+            <h3>📱 手机操作指南：</h3>
+            <ul>
+                <li><strong>单指触摸</strong>：放置材质（沙子、水、火等）</li>
+                <li><strong>双指触摸</strong>：擦除粒子</li>
+                <li><strong>双指缩放</strong>：调整视图大小</li>
+                <li><strong>材质切换</strong>：点击底部面板选择</li>
+            </ul>
+        </div>
+        
+        <div class="mobile-tip">
+            <h3>⚡ 游戏特性：</h3>
+            <ul>
+                <li>✅ 16种物理材质</li>
+                <li>✅ 9种化学反应</li>
+                <li>✅ 触摸屏优化</li>
+                <li>✅ 60FPS流畅动画</li>
+                <li>✅ 响应式设计</li>
+            </ul>
+        </div>
+        
+        <p style="margin-top: 30px; font-size: 0.9em; opacity: 0.8;">
+            部署时间：2026-03-04 | 版本：1.0.0<br>
+            访问地址：https://hhy1007.github.io/sand-simulation-game/
+        </p>
+    </div>
+    
+    <script>
+        // 自动重定向到游戏页面（如果是移动设备）
+        if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+            setTimeout(function() {
+                window.location.href = 'game.html';
+            }, 3000);
+        }
+    </script>
+</body>
+</html>
