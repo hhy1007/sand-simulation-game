@@ -3,115 +3,142 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>落沙模拟游戏 - 手机直接访问</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            text-align: center;
-            padding: 50px;
-            background: linear-gradient(135deg, #667eea, #764ba2);
-            color: white;
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-        }
-        .container {
-            background: rgba(255,255,255,0.1);
-            padding: 40px;
-            border-radius: 20px;
-            backdrop-filter: blur(10px);
-            max-width: 600px;
-            margin: 0 auto;
-        }
-        h1 {
-            font-size: 2.5rem;
-            margin-bottom: 20px;
-            color: #4ecdc4;
-        }
-        .button {
-            display: inline-block;
-            padding: 15px 30px;
-            background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
-            color: white;
-            text-decoration: none;
-            border-radius: 50px;
-            font-size: 1.2rem;
-            margin: 20px;
-            transition: transform 0.3s;
-        }
-        .button:hover {
-            transform: translateY(-5px);
-        }
-        .qr {
-            margin: 30px auto;
-            background: white;
-            padding: 15px;
-            border-radius: 10px;
-            width: 200px;
-            height: 200px;
-        }
-        .qr img {
-            width: 100%;
-            height: 100%;
-        }
-        .mobile-tip {
-            background: rgba(255,255,255,0.1);
-            padding: 15px;
-            border-radius: 10px;
-            margin-top: 20px;
-            text-align: left;
-        }
-    </style>
+    <title>落沙模拟游戏 - Sand Simulation Game</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
-    <div class="container">
-        <h1>🎮 落沙模拟游戏</h1>
-        <p>基于物理引擎的粒子模拟 | 手机完美适配</p>
-        
-        <div class="qr">
-            <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https://hhy1007.github.io/sand-simulation-game/game.html" 
-                 alt="扫描二维码玩落沙游戏">
-        </div>
-        <p>扫描二维码用手机访问游戏</p>
-        
-        <a href="game.html" class="button">🎮 立即开始游戏</a>
-        
-        <div class="mobile-tip">
-            <h3>📱 手机操作指南：</h3>
-            <ul>
-                <li><strong>单指触摸</strong>：放置材质（沙子、水、火等）</li>
-                <li><strong>双指触摸</strong>：擦除粒子</li>
-                <li><strong>双指缩放</strong>：调整视图大小</li>
-                <li><strong>材质切换</strong>：点击底部面板选择</li>
-            </ul>
-        </div>
-        
-        <div class="mobile-tip">
-            <h3>⚡ 游戏特性：</h3>
-            <ul>
-                <li>✅ 16种物理材质</li>
-                <li>✅ 9种化学反应</li>
-                <li>✅ 触摸屏优化</li>
-                <li>✅ 60FPS流畅动画</li>
-                <li>✅ 响应式设计</li>
-            </ul>
-        </div>
-        
-        <p style="margin-top: 30px; font-size: 0.9em; opacity: 0.8;">
-            部署时间：2026-03-04 | 版本：1.0.0<br>
-            访问地址：https://hhy1007.github.io/sand-simulation-game/
-        </p>
+    <div class="game-container">
+        <!-- 标题区域 -->
+        <header class="game-header">
+            <h1><i class="fas fa-mountain"></i> 落沙模拟游戏</h1>
+            <p class="subtitle">基于物理引擎的粒子模拟系统</p>
+        </header>
+
+        <!-- 主游戏区域 -->
+        <main class="game-main">
+            <div class="canvas-container">
+                <canvas id="gameCanvas"></canvas>
+                <div class="canvas-overlay">
+                    <div class="instructions">
+                        <h3><i class="fas fa-mouse-pointer"></i> 操作方法</h3>
+                        <ul>
+                            <li>点击/拖动: 放置材质</li>
+                            <li>鼠标滚轮: 调整画笔大小</li>
+                            <li>空格键: 暂停/继续</li>
+                            <li>C键: 清空画布</li>
+                            <li>R键: 重置模拟</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 控制面板 -->
+            <div class="control-panel">
+                <!-- 材质选择 -->
+                <section class="materials-section">
+                    <h3><i class="fas fa-palette"></i> 材质选择</h3>
+                    <div class="materials-grid" id="materialsGrid">
+                        <!-- 材质按钮将通过JavaScript动态生成 -->
+                    </div>
+                </section>
+
+                <!-- 工具设置 -->
+                <section class="tools-section">
+                    <h3><i class="fas fa-tools"></i> 工具设置</h3>
+                    <div class="tool-controls">
+                        <div class="tool-control">
+                            <label for="brushSize"><i class="fas fa-circle"></i> 画笔大小</label>
+                            <input type="range" id="brushSize" min="1" max="50" value="10">
+                            <span id="brushSizeValue">10</span>
+                        </div>
+                        <div class="tool-control">
+                            <label for="gravity"><i class="fas fa-weight-hanging"></i> 重力强度</label>
+                            <input type="range" id="gravity" min="0" max="20" value="9.8" step="0.1">
+                            <span id="gravityValue">9.8</span>
+                        </div>
+                        <div class="tool-control">
+                            <label for="simulationSpeed"><i class="fas fa-tachometer-alt"></i> 模拟速度</label>
+                            <input type="range" id="simulationSpeed" min="1" max="10" value="5">
+                            <span id="speedValue">5</span>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- 游戏控制 -->
+                <section class="game-controls-section">
+                    <h3><i class="fas fa-gamepad"></i> 游戏控制</h3>
+                    <div class="game-buttons">
+                        <button id="playPauseBtn" class="btn btn-primary">
+                            <i class="fas fa-play"></i> 开始模拟
+                        </button>
+                        <button id="clearBtn" class="btn btn-secondary">
+                            <i class="fas fa-trash"></i> 清空
+                        </button>
+                        <button id="resetBtn" class="btn btn-secondary">
+                            <i class="fas fa-redo"></i> 重置
+                        </button>
+                        <button id="saveBtn" class="btn btn-success">
+                            <i class="fas fa-save"></i> 保存
+                        </button>
+                        <button id="loadBtn" class="btn btn-info">
+                            <i class="fas fa-folder-open"></i> 加载
+                        </button>
+                    </div>
+                </section>
+
+                <!-- 统计信息 -->
+                <section class="stats-section">
+                    <h3><i class="fas fa-chart-bar"></i> 统计信息</h3>
+                    <div class="stats-grid">
+                        <div class="stat-item">
+                            <span class="stat-label">粒子数量</span>
+                            <span id="particleCount" class="stat-value">0</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-label">帧率</span>
+                            <span id="fpsCounter" class="stat-value">0</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-label">物理更新</span>
+                            <span id="physicsUpdate" class="stat-value">0ms</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-label">内存使用</span>
+                            <span id="memoryUsage" class="stat-value">0MB</span>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </main>
+
+        <!-- 页脚信息 -->
+        <footer class="game-footer">
+            <div class="footer-content">
+                <p>
+                    <i class="fas fa-code"></i> 使用 HTML5 Canvas + JavaScript 物理引擎构建 |
+                    <i class="fas fa-users"></i> Claude Code Agent Teams 协作开发
+                </p>
+                <p class="footer-links">
+                    <a href="#" id="helpBtn"><i class="fas fa-question-circle"></i> 帮助</a>
+                    <a href="#" id="aboutBtn"><i class="fas fa-info-circle"></i> 关于</a>
+                    <a href="#" id="githubBtn"><i class="fab fa-github"></i> 源代码</a>
+                </p>
+            </div>
+        </footer>
     </div>
-    
-    <script>
-        // 自动重定向到游戏页面（如果是移动设备）
-        if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
-            setTimeout(function() {
-                window.location.href = 'game.html';
-            }, 3000);
-        }
-    </script>
+
+    <!-- 模态框 -->
+    <div id="helpModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2><i class="fas fa-question-circle"></i> 游戏帮助</h2>
+            <div class="modal-body">
+                <!-- 帮助内容将通过JavaScript动态生成 -->
+            </div>
+        </div>
+    </div>
+
+    <script type="module" src="main.js"></script>
 </body>
 </html>

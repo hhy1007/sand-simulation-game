@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>落沙模拟游戏 - 直接访问</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 20px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: rgba(255,255,255,0.1);
+            padding: 30px;
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+        }
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            color: #4ecdc4;
+        }
+        .button {
+            display: inline-block;
+            padding: 15px 40px;
+            background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-size: 1.2rem;
+            margin: 20px;
+            font-weight: bold;
+            transition: transform 0.3s;
+        }
+        .button:hover {
+            transform: translateY(-5px);
+        }
+        .instructions {
+            background: rgba(255,255,255,0.1);
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+            text-align: left;
+        }
+        .mobile-test {
+            margin-top: 30px;
+            padding: 15px;
+            border: 2px solid #4ecdc4;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🎮 落沙模拟游戏</h1>
+        <p>基于物理引擎的粒子模拟 | 手机完美适配</p>
+        
+        <a href="./" class="button" style="background: linear-gradient(45deg, #667eea, #764ba2);">
+            🎮 点击这里开始游戏
+        </a>
+        
+        <p><strong>或者直接访问游戏页面：</strong></p>
+        <a href="./" class="button">立即开始游戏</a>
+        
+        <div class="instructions">
+            <h3>📱 手机操作指南：</h3>
+            <ul>
+                <li><strong>单指触摸</strong>：放置材质（沙子、水、火等）</li>
+                <li><strong>双指触摸</strong>：擦除粒子</li>
+                <li><strong>双指缩放</strong>：调整视图大小</li>
+                <li><strong>材质切换</strong>：点击底部面板选择16种材质</li>
+            </ul>
+        </div>
+        
+        <div class="mobile-test">
+            <h3>🔧 游戏特性：</h3>
+            <ul>
+                <li>✅ 16种物理材质实时模拟</li>
+                <li>✅ 9种化学反应特效</li>
+                <li>✅ 手机触摸优化</li>
+                <li>✅ 60FPS流畅动画</li>
+                <li>✅ 响应式设计</li>
+            </ul>
+        </div>
+        
+        <div style="margin-top: 30px; font-size: 0.9em; opacity: 0.8;">
+            <p>如果游戏无法加载，请：</p>
+            <ol>
+                <li>刷新页面</li>
+                <li>清除浏览器缓存</li>
+                <li>使用Chrome/Safari浏览器</li>
+                <li>检查网络连接</li>
+            </ol>
+        </div>
+    </div>
+    
+    <script>
+        // 自动跳转到游戏（如果是移动设备）
+        if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+            setTimeout(function() {
+                window.location.href = './';
+            }, 2000);
+        }
+        
+        // 检查页面是否正常加载
+        window.addEventListener('load', function() {
+            console.log('页面加载完成，游戏应正常工作');
+        });
+    </script>
+</body>
+</html>
